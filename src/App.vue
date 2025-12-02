@@ -1,7 +1,12 @@
 <script setup>
-import { RouterView } from 'vue-router'
-</script>
+import { inject } from "vue";
+import AppHeader from './components/AppHeader.vue'
 
+const kc = inject("keycloak");
+</script>
 <template>
-  <RouterView />
+    <div>
+        <AppHeader />
+        <router-view />
+    </div>
 </template>
