@@ -1,0 +1,58 @@
+name: Deploy to OpenShift
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Image tag to deploy (e.g. latest or a release tag)"
+        required: true
+        default: "latest"
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install CLI tools from OpenShift Mirror
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          oc: "4"
+
+      - name: Verify oc
+        shell: bash
+        run: |
+          oc version
+
+      - name: Login to OpenShift
+        uses: redhat-actions/oc-login@v1
+        with:
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          insecure_skip_tls_verify: 'true'
+          namespace: ${{ secrets.OPENSHIFT_NAMESPACE }}
+
+      - name: Set project/namespace
+        run: |
+          oc project "${{ secrets.OPENSHIFT_NAMESPACE }}"
+
+      - name: Set image in deployment manifest
+        env:
+          IMAGE_BASE: ghcr.io/${{ github.repository }}
+          TAG: ${{ github.event.inputs.image_tag || 'latest' }}
+        run: |
+          sed -i "s|ghcr.io/OWNER/REPO:latest|${IMAGE_BASE}:${TAG}|g" k8s/deployment.yaml
+
+      - name: Apply manifests
+        run: |
+          oc apply -f k8s/deployment.yaml
+          oc apply -f k8s/service.yaml
+          oc apply -f k8s/route.yaml
+
+      - name: Wait for rollout
+        run: |
+          oc rollout status deployment/ai-form-assistant-showcase-app --watch

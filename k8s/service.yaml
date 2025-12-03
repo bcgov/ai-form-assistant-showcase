@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-form-assistant-showcase-app
+  labels:
+    app: ai-form-assistant-showcase-app
+spec:
+  selector:
+    app: ai-form-assistant-showcase-app
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP

@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ai-form-assistant-showcase-app
+  labels:
+    app: ai-form-assistant-showcase-app
+spec:
+  to:
+    kind: Service
+    name: ai-form-assistant-showcase-app
+  port:
+    targetPort: http
+  tls:
+    termination: edge
