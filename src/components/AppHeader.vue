@@ -65,6 +65,7 @@ const kc = inject("keycloak"); // assumes Keycloak instance is provided in app
     font-weight: 500;
 }
 
+.nav-links ::v-deep(.router-link-active),
 .nav-links a:hover {
     text-decoration: underline;
 }
