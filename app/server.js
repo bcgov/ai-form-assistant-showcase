@@ -29,13 +29,13 @@ app.listen(PORT, () => {
 
 
 // get environment variables for client-side use
-app.get('/config.js', (req, res) => {
-  const cfg = {
-    ssoRedirecUri: process.env.SSO_REDIRECT_URI || 'http://localhost:5173',
-    ssoAuthServerUrl: process.env.SSO_AUTH_SERVER_URL || 'https://dev.loginproxy.com/auth',
-    ssoRealm: process.env.SSO_REALM || 'standard',
-    ssoClientId: process.env.SSO_CLIENT_ID,
-  };
-  res.type('application/javascript').send(`window.__APP_CONFIG__ = ${JSON.stringify(cfg)};`);
-});
+// app.get('/config.js', (req, res) => {
+//   const cfg = {
+//     ssoRedirecUri: process.env.SSO_REDIRECT_URI || 'http://localhost:5173',
+//     ssoAuthServerUrl: process.env.SSO_AUTH_SERVER_URL || 'https://dev.loginproxy.com/auth',
+//     ssoRealm: process.env.SSO_REALM || 'standard',
+//     ssoClientId: process.env.SSO_CLIENT_ID,
+//   };
+//   res.type('application/javascript').send(`window.__APP_CONFIG__ = ${JSON.stringify(cfg)};`);
+// });
 

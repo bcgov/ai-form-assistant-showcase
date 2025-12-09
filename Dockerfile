@@ -1,25 +1,62 @@
-# Stage 1: Build frontend
-FROM node:20-alpine AS build
-WORKDIR /app
+ARG APP_ROOT=/opt/app-root/src
+ARG BASE_IMAGE=docker.io/node:20.17.0-alpine
 
-# Install frontend deps and build (now under app/frontend)
-COPY app/frontend/package*.json ./app/frontend/
-RUN npm --prefix app/frontend ci
-COPY app/frontend ./app/frontend
-RUN npm --prefix app/frontend run build
+#
+# Build the app
+#
+FROM ${BASE_IMAGE} as app
 
-# Stage 2: Runtime server (now under app)
-FROM node:20-alpine AS runtime
-WORKDIR /app
-ENV NODE_ENV=production
+ARG APP_ROOT
+ENV NO_UPDATE_NOTIFIER=true
 
-# Install server deps
-COPY app/package*.json ./app/
-RUN npm --prefix app ci --only=production
+# NPM Permission Fix
+RUN mkdir -p /.npm
+RUN chown -R 1001:0 /.npm
 
-# Copy server and built assets
-COPY app/server.js ./app/
-COPY --from=build /app/app/frontend/dist ./app/public
+# Build App
+COPY app ${APP_ROOT}
+RUN chown -R 1001:0 ${APP_ROOT}
+USER 1001
+WORKDIR ${APP_ROOT}
+RUN npm ci --omit=dev
 
-EXPOSE 8080
+#
+# Build the frontend
+#
+FROM ${BASE_IMAGE} as frontend
+
+ARG APP_ROOT
+ENV NO_UPDATE_NOTIFIER=true
+
+# NPM Permission Fix
+RUN mkdir -p /.npm
+RUN chown -R 1001:0 /.npm
+
+# Build Frontend
+COPY app/frontend ${APP_ROOT}
+RUN chown -R 1001:0 ${APP_ROOT}
+USER 1001
+WORKDIR ${APP_ROOT}
+RUN npm ci && npm run build
+
+#
+# Create the final container image
+#
+FROM ${BASE_IMAGE}
+
+ARG APP_ROOT
+ENV APP_PORT=8080 \
+    NO_UPDATE_NOTIFIER=true
+
+# NPM Permission Fix
+RUN mkdir -p /.npm
+RUN chown -R 1001:0 /.npm
+
+# Install File Structure
+COPY --from=app ${APP_ROOT} ${APP_ROOT}
+COPY --from=frontend ${APP_ROOT}/dist ${APP_ROOT}/frontend/dist
+COPY .git ${APP_ROOT}/.git
+WORKDIR ${APP_ROOT}
+
+EXPOSE ${APP_PORT}
 CMD ["node", "app/server.js"]
