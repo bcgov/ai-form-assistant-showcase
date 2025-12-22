@@ -3,7 +3,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-openshift-ingress-to-{{ include "aifas.fullname" . }}-app
+  name: allow-openshift-ingress-to-{{ include "aifas.fullname" . }}
   labels:
     {{- include "aifas.labels" . | nindent 4 }}
 spec:
