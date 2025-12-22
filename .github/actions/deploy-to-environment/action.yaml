@@ -35,7 +35,7 @@ runs:
     - name: Install CLI tools from OpenShift Mirror
       uses: redhat-actions/openshift-tools-installer@v1
       with:
-        oc: "4"
+        oc: "4.20.8"
 
     - name: Login to OpenShift and select project
       shell: bash

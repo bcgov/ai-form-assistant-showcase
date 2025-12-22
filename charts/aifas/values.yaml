@@ -68,7 +68,7 @@ autoscaling:
 
 serviceAccount:
   # -- Specifies whether a service account should be created
-  enabled: false
+  enabled: true
   # -- Annotations to add to the service account
   annotations: {}
   # -- The name of the service account to use.
@@ -120,7 +120,7 @@ resources:
 
 config:
   # -- Set to true if you want to let Helm manage and overwrite your configmaps.
-  enabled: false
+  enabled: true
 
   # -- This should be set to true if and only if you require configmaps and secrets to be release
   # scoped. In the event you want all instances in the same namespace to share a similar
@@ -144,5 +144,6 @@ config:
     SERVER_OIDC_AUTHORITY: ~
     SERVER_OIDC_IDENTITYKEY: ~
     SERVER_OIDC_PUBLICKEY: ~
+    SERVER_OIDC_SERVERURL: ~
     SERVER_PORT: "8080"
     # SERVER_STATICFILES: ~
