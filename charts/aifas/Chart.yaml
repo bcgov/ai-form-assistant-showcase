@@ -1,6 +1,6 @@
 apiVersion: v2
 name: ai-form-assistant-showcase
-version: 0.0.7
+version: 0.0.8
 kubeVersion: ">= 1.13.0"
 description: AI Form Assistant Showcase
 type: application
