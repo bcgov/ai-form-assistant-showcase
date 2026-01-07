@@ -1,6 +1,6 @@
 ---
 apiVersion: apps.openshift.io/v1
-kind: DeploymentConfig
+kind: Deployment
 metadata:
   name: {{ include "aifas.fullname" . }}
   labels:
@@ -11,11 +11,7 @@ spec:
   selector:
     {{- include "aifas.selectorLabels" . | nindent 4 }}
   strategy:
-    resources:
-      {{- toYaml .Values.resources | nindent 6 }}
-    rollingParams:
-      timeoutSeconds: 601
-    type: Rolling
+    type: Recreate
   template:
     metadata:
       labels: {{ include "aifas.selectorLabels" . | nindent 8 }}

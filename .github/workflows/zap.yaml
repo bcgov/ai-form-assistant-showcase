@@ -18,4 +18,4 @@ jobs:
           artifact_name: aifas
           issue_title: "ZAP Security Report: aifas"
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: https://aifas-prod-master.apps.silver.devops.gov.bc.ca
+          target: https://aifas-prod-main.apps.silver.devops.gov.bc.ca
