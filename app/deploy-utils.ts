@@ -1,11 +1,11 @@
-// This script attempts to gracefully rebuild and update vue3-scaffold-frontend if necessary
+// This script attempts to gracefully rebuild and update aifas-frontend if necessary
 /* eslint-disable no-console */
 import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'fs';
 import { basename, join } from 'path';
 
 const FRONTEND_DIR = '../frontend';
 const DIST_DIR = 'dist';
-const TITLE = 'vue3-scaffold-frontend';
+const TITLE = 'aifas-frontend';
 
 try {
   const args = process.argv.slice(2);
@@ -47,7 +47,7 @@ try {
 
 /**
  * @function buildComponents
- * @description Rebuild `vue3-scaffold-frontend` library
+ * @description Rebuild `aifas-frontend` library
  */
 function buildComponents() {
   if (!existsSync(`${FRONTEND_DIR}/node_modules`)) {
@@ -61,7 +61,7 @@ function buildComponents() {
 
 /**
  * @function cleanComponents
- * @description Clean `vue3-scaffold-frontend` library directory
+ * @description Clean `aifas-frontend` library directory
  */
 function cleanComponents() {
   console.log(`Cleaning ${TITLE}...`);
@@ -71,7 +71,7 @@ function cleanComponents() {
 
 /**
  * @function deployComponents
- * @description Redeploy `vue3-scaffold-frontend` library
+ * @description Redeploy `aifas-frontend` library
  */
 function deployComponents() {
   console.log(`Redeploying ${TITLE}...`);
