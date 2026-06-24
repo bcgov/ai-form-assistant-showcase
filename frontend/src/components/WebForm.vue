@@ -1,8 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { Message, Panel } from '@/lib/primevue';
+import MarkdownIt from 'markdown-it';
 import formDefinition from '@/assets/aifa/formDefinition.json';
 import promptTemplate from '@/assets/aifa/promptTemplate.md?raw';
+import feeTemplate from '@/assets/aifa/Fee_Calculation.md?raw';
+
+const md = new MarkdownIt();
+const promptTemplateHtml = computed(() => md.render(promptTemplate));
+const feeTemplateHtml = computed(() => md.render(feeTemplate));
 
 // ----- Form Data -----
 const formData = ref({
@@ -114,7 +120,7 @@ const calculatedPrice = computed(() => {
 // ----- Actions -----
 
 const submitForm = () => {
-  console.log('Form submitted:', formData.value);
+  // console.log('Form submitted:', formData.value);
   // Add your form submission logic here
 };
 
@@ -487,6 +493,7 @@ const resetForm = () => {
         toggleable
         collapsed
         class="mt-8"
+        style="overflow-x: auto"
       >
         <p class="m-0">
           A Form Definition (JSON schema) tells the AI Form Assistant about the webform and data structure. It is used
@@ -500,6 +507,7 @@ const resetForm = () => {
         toggleable
         collapsed
         class="mt-8"
+        style="overflow-x: auto"
       >
         <p class="m-0">
           A Prompt Template is a text file that contains the instructions and guidelines for how the AI Form Assistant
@@ -507,7 +515,21 @@ const resetForm = () => {
           input, and is used to ensure that the Assistant's responses are relevant, accurate, and consistent with the
           desired tone.
         </p>
-        <pre><code>{{ promptTemplate }}</code></pre>
+        <div class="markdown-body" v-html="promptTemplateHtml" />
+      </Panel>
+
+      <Panel
+        header="MCP Tool - Fee Calculation"
+        toggleable
+        collapsed
+        class="mt-8"
+        style="overflow-x: auto"
+      >
+        <p class="m-0">
+          The MCP Tool is a fee calculation tool that calculates the total cost of a fishing licence based on the
+          selected options.
+        </p>
+        <div class="markdown-body" v-html="feeTemplateHtml" />
       </Panel>
     </div>
   </div>
@@ -517,5 +539,21 @@ const resetForm = () => {
 .form-container {
   max-width: 800px;
   color: #2d2d2d;
+}
+
+.markdown-body :deep(pre) {
+  background: #f4f4f4;
+  padding: 0.75rem;
+  overflow-x: auto;
+}
+
+.markdown-body :deep(table) {
+  border-collapse: collapse;
+}
+
+.markdown-body :deep(th),
+.markdown-body :deep(td) {
+  border: 1px solid #ddd;
+  padding: 0.4rem 0.6rem;
 }
 </style>
