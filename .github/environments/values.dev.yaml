@@ -6,6 +6,8 @@ config:
     FRONTEND_NOTIFICATION_BANNER: This is the DEV environment of aifas.
     FRONTEND_OIDC_AUTHORITY: https://dev.loginproxy.gov.bc.ca/auth/realms/standard
     FRONTEND_OIDC_CLIENTID: ai-form-assistant-showcase-6180
+    ORCHESTRATOR_API_URL: https://orchestrator-agent-1dca6b-dev.apps.silver.devops.gov.bc.ca/invoke
+    BACKEND_ORIGIN: ai-form-assistant-showcase-main:8080
     SERVER_APIPATH: /api/v1
     SERVER_BODYLIMIT: 30mb
     SERVER_LOGLEVEL: http

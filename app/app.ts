@@ -38,11 +38,15 @@ app.use(
         connectSrc: [
           "'self'", // eslint-disable-line
           new URL(config.get('frontend.oidc.authority')).origin,
-          'https://nr-ai-form-dev-api-fd-atambqdccsagafbt.a01.azurefd.net'
+          'https://orchestrator-agent-1dca6b-dev.apps.silver.devops.gov.bc.ca',
+          'https://orchestrator-agent-1dca6b-test.apps.silver.devops.gov.bc.ca',
+          'https://orchestrator-agent-1dca6b-prod.apps.silver.devops.gov.bc.ca'
         ],
         scriptSrc: [
           "'self'", // eslint-disable-line
-          'https://aiformclient-drfvhdfzascbfkh5.a01.azurefd.net'
+          'https://jsclientdev-esdyd6g2cnh3fcen.a02.azurefd.net',
+          'https://jsclienttest-esdyd6g2cnh3fcen.a02.azurefd.net',
+          'https://jsclientprod-esdyd6g2cnh3fcen.a02.azurefd.net'
         ]
       }
     }

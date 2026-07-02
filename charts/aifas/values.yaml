@@ -27,13 +27,11 @@ failurePolicy: Retry
 podAnnotations: {}
 
 # -- Privilege and access control settings
-podSecurityContext:
-  {}
+podSecurityContext: {}
   # fsGroup: 2000
 
 # -- Privilege and access control settings
-securityContext:
-  {}
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -91,8 +89,7 @@ route:
   # -- Specifies whether a route should be created
   enabled: true
   # -- Annotations to add to the route
-  annotations:
-    {}
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   host: chart-example.local
@@ -138,6 +135,8 @@ config:
     # FRONTEND_NOTIFICATION_BANNER: ~
     FRONTEND_OIDC_AUTHORITY: ~
     FRONTEND_OIDC_CLIENTID: ~
+    ORCHESTRATOR_API_URL: ~
+    BACKEND_ORIGIN: ~
     SERVER_APIPATH: "/api/v1"
     SERVER_BODYLIMIT: "30mb"
     SERVER_LOGLEVEL: "http"
