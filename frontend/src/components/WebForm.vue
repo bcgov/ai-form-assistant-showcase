@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue';
 import { Message, Panel } from '@/lib/primevue';
 import formDefinition from '@/assets/aifa/formDefinition.json';
-import promptTemplate from '@/assets/aifa/promptTemplate.md?raw';
 
 // ----- Form Data -----
 const formData = ref({
@@ -244,7 +243,7 @@ const resetForm = () => {
 
         <!-- Licence Type -->
         <fieldset>
-          <legend>Fishing Licence Type</legend>
+          <legend>Lunar Fishing Licence Type</legend>
           <div
             v-tooltip="{ value: 'Ask the Assistant' }"
             data-id="licenceDuration_help"
@@ -429,7 +428,7 @@ const resetForm = () => {
       </form>
     </div>
 
-    <div class="col-span-5 col-start-8 notes-container mt-8">
+    <div class="col-span-6 col-start-7 notes-container mt-8">
       <Panel
         header="Data Sources"
         toggleable
@@ -507,7 +506,31 @@ const resetForm = () => {
           input, and is used to ensure that the Assistant's responses are relevant, accurate, and consistent with the
           desired tone.
         </p>
-        <pre><code>{{ promptTemplate }}</code></pre>
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          class="markdown-body"
+          v-html="promptTemplateHtml"
+        ></div>
+        <!-- eslint-enable vue/no-v-html -->
+      </Panel>
+
+      <Panel
+        header="MCP Tool - Fee Calculation"
+        toggleable
+        collapsed
+        class="mt-8"
+        style="overflow-x: auto"
+      >
+        <p class="m-0">
+          The MCP Tool is a fee calculation tool that calculates the total cost of a fishing licence based on the
+          selected options.
+        </p>
+        <!-- eslint-disable vue/no-v-html -->
+        <div
+          class="markdown-body"
+          v-html="feeTemplateHtml"
+        ></div>
+        <!-- eslint-enable vue/no-v-html -->
       </Panel>
     </div>
   </div>

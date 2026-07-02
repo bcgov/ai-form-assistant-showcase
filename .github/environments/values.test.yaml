@@ -6,12 +6,14 @@ config:
     FRONTEND_NOTIFICATION_BANNER: This is the DEV environment of aifas.
     FRONTEND_OIDC_AUTHORITY: https://test.loginproxy.gov.bc.ca/auth/realms/standard
     FRONTEND_OIDC_CLIENTID: ai-form-assistant-showcase-6180
+    ORCHESTRATOR_API_URL: https://orchestrator-agent-1dca6b-test.apps.silver.devops.gov.bc.ca/invoke
+    BACKEND_ORIGIN: http://ai-form-assistant-showcase-main:8080
     SERVER_APIPATH: /api/v1
     SERVER_BODYLIMIT: 30mb
     SERVER_LOGLEVEL: http
     SERVER_OIDC_AUTHORITY: https://test.loginproxy.gov.bc.ca/auth/realms/standard
     SERVER_OIDC_IDENTITYKEY: idir_user_guid,bceid_user_guid,github_id
     SERVER_OIDC_PUBLICKEY: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuy7zfh2ZgpDV5mH/aXyLDTddZK81rGakJcTy4KvCNOkDDxt1KAhW02lmbCo8YhHCOzjNZBp1+Vi6QiMRgBqAe2GTPZYEiV70aXfROGZe3Nvwcjbtki6HoyRte3SpqLJEIPL2F+hjJkw1UPGnjPTWZkEx9p74b9i3BjuE8RnjJ0Sza2MWw83zoQUZEJRGiopSL0yuVej6t2LO2btVdVf7QuZfPt9ehkcQYlPKpVvJA+pfeqPAdnNt7OjEIeYxinjurZr8Z04hz8UhkRefcWlSbFzFQYmL7O7iArjW0bsSvq8yNUd5r0KCOQkFduwZy26yTzTxj8OLFT91fEmbBBl4rQIDAQAB
-    SERVER_OIDC_SERVERURL: https://dtestev.loginproxy.gov.bc.ca/auth
+    SERVER_OIDC_SERVERURL: https://test.loginproxy.gov.bc.ca/auth
     SERVER_OIDC_REALM: standard
     SERVER_PORT: "8080"
