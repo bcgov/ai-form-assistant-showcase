@@ -5,7 +5,9 @@
     "oidc": {
       "authority": "FRONTEND_OIDC_AUTHORITY",
       "clientId": "FRONTEND_OIDC_CLIENTID"
-    }
+    },
+    "orchestratorApiUrl": "ORCHESTRATOR_API_URL",
+    "backendOrigin": "BACKEND_ORIGIN"
   },
   "server": {
     "apiPath": "SERVER_APIPATH",
