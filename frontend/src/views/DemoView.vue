@@ -5,7 +5,7 @@ import DemoDisclaimerBanner from '@/components/DemoDisclaimerBanner.vue';
 import WebForm from '@/components/WebForm.vue';
 import WebFormResources from '@/components/WebFormResources.vue';
 
-const AIFAS_CLIENT_SRC = '/aifas-client-scripts/client.js';
+const AIFAS_CLIENT_SRC = 'https://aiformclientprod.z9.web.core.windows.net/scripts/tenants/fish/client.js';
 
 onMounted(() => {
   if (!document.querySelector(`script[src="${AIFAS_CLIENT_SRC}"]`)) {
