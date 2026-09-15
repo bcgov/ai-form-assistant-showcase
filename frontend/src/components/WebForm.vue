@@ -4,7 +4,7 @@ import { Message } from '@/lib/primevue';
 
 // ----- Form Data -----
 const formData = ref({
-  dob: '',
+  angler_age_range: '',
   wid: '',
   residency: '',
   licenceDuration: '',
@@ -16,6 +16,12 @@ const formData = ref({
   classifiedWaterName: '',
   surcharge: []
 });
+
+// age range options
+const angler_age_range_options = [
+  { label: 'Under 16', value: 'child' },
+  { label: '16 and over', value: 'adult' }
+];
 
 // Residency options
 const residencyOptions = [
@@ -64,7 +70,7 @@ const submitForm = () => {
 
 const resetForm = () => {
   formData.value = {
-    dob: '',
+    angler_age_range: '',
     wid: '',
     licenceDuration: '',
     seniorRate: false,
@@ -137,19 +143,26 @@ const resetForm = () => {
         <legend>Angler Information</legend>
         <div
           v-tooltip="{ value: 'Ask the Assistant' }"
-          data-id="dob_help"
+          data-id="angler_age_range_help"
           class="helpLink"
         />
 
-        <label for="dob">Date of Birth</label>
-        <input
-          id="dob"
-          v-model="formData.dob"
-          type="date"
-          data-id="dob"
-          class="w-full mb-6"
-          required
-        />
+        <label for="angler_age_range">Date of Birth</label>
+        <select
+          v-model="formData.angler_age_range"
+          data-id="angler_age_range"
+          class="w-full mb-5"
+        >
+          <option value="">please select</option>
+          <option
+            v-for="option in angler_age_range_options"
+            :key="option.value"
+            :value="option.value"
+          >
+            {{ option.label }}
+          </option>
+        </select>
+
         <!-- Residency Status -->
 
         <div class="form-group mb-6">
