@@ -131,6 +131,7 @@ config:
   # For configuration keys named `*_ENABLED`, either leave them commented/undefined, or set them
   # to string value "true".
   configMap:
+    # FRONTEND_AIFAS_CLIENT_SRC: ~
     FRONTEND_APIPATH: "api/v1"
     # FRONTEND_NOTIFICATION_BANNER: ~
     FRONTEND_OIDC_AUTHORITY: ~

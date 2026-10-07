@@ -1,5 +1,6 @@
 {
   "frontend": {
+    "aifasClientSrc": "https://example.com/scripts/tenants/fish/client.js",
     "apiPath": "api/v1",
     "orchestratorApiUrl": "http://localhost:8082/invoke",
     "backendOrigin": "http://localhost:5173"

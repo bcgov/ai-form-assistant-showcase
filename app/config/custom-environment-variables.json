@@ -1,5 +1,6 @@
 {
   "frontend": {
+    "aifasClientSrc": "FRONTEND_AIFAS_CLIENT_SRC",
     "apiPath": "FRONTEND_APIPATH",
     "notificationBanner": "FRONTEND_NOTIFICATION_BANNER",
     "oidc": {

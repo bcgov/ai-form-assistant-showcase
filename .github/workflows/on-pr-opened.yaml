@@ -57,6 +57,7 @@ jobs:
           namespace_environment: dev
           openshift_server: ${{ secrets.OPENSHIFT_SERVER }}
           openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          aifas_client_src: ${{ vars.AIFAS_CLIENT_SRC }}
       - name: Release Comment on PR
         uses: marocchino/sticky-pull-request-comment@v2.9.0
         if: success()

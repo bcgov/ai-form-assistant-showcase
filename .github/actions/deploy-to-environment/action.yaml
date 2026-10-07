@@ -25,6 +25,9 @@ inputs:
   openshift_token:
     description: Openshift Service Account Token
     required: true
+  aifas_client_src:
+    description: URL of the AI Form Assistant client script
+    required: true
 
 runs:
   using: composite
@@ -56,6 +59,7 @@ runs:
         --values ./.github/environments/values.${{ inputs.environment }}.yaml
         --set image.repository=ghcr.io/${{ github.repository_owner }}
         --set image.tag=sha-$(git rev-parse --short HEAD)
+        --set-string config.configMap.FRONTEND_AIFAS_CLIENT_SRC=${{ inputs.aifas_client_src }}
         --set route.host=${{ inputs.acronym }}-${{ inputs.namespace_environment }}-${{ inputs.job_name }}.apps.silver.devops.gov.bc.ca
         --timeout 10m
         --wait
