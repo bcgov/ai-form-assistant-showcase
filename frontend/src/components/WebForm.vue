@@ -147,7 +147,7 @@ const resetForm = () => {
           class="helpLink"
         />
 
-        <label for="angler_age_range">Date of Birth</label>
+        <label for="angler_age_range">Age</label>
         <select
           v-model="formData.angler_age_range"
           data-id="angler_age_range"
