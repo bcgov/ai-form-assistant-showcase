@@ -3,6 +3,29 @@ entries:
   ai-form-assistant-showcase:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2026-10-22T20:09:31.841436474Z"
+    description: AI Form Assistant Showcase
+    digest: a7cc96bec63e8f8b5e040585b2fba7dac92075bd046ac9d74dfb440ab31ad8ba
+    home: https://bcgov.github.io/ai-form-assistant-showcase
+    keywords:
+    - nodejs
+    - javascript
+    - typescript
+    - docker
+    - vue
+    kubeVersion: '>= 1.13.0'
+    maintainers:
+    - email: NR.CommonServiceShowcase@gov.bc.ca
+      name: NR Common Service Showcase Team
+    name: ai-form-assistant-showcase
+    sources:
+    - https://github.com/bcgov/ai-form-assistant-showcase
+    type: application
+    urls:
+    - https://github.com/bcgov/ai-form-assistant-showcase/releases/download/ai-form-assistant-showcase-0.2.2/ai-form-assistant-showcase-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2026-10-07T21:45:52.648570727Z"
     description: AI Form Assistant Showcase
     digest: e5d0006d8bb0cd4148a646892ed16a98e8a96bf78c1028df36e0e4185986354a
@@ -392,4 +415,4 @@ entries:
     urls:
     - https://github.com/bcgov/ai-form-assistant-showcase/releases/download/ai-form-assistant-showcase-0.0.5/ai-form-assistant-showcase-0.0.5.tgz
     version: 0.0.5
-generated: "2026-10-07T21:45:52.648716709Z"
+generated: "2026-10-22T20:09:31.841617638Z"
