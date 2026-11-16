@@ -48,6 +48,11 @@ const requirements = [
     purpose:
       "Your own wording for when the assistant can't answer, with your support contact, and a subject-matter expert to review answers during testing.",
     preparedBy: 'Your team'
+  },
+  {
+    item: 'Technical Support',
+    purpose: 'Our team are available to provide technical support for the integration and operation of the assistant.',
+    preparedBy: 'Our team'
   }
 ];
 
